@@ -1,13 +1,9 @@
 import React from 'react';
 import {
-  Image,
   Platform,
-  ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
-  FlatList,
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
