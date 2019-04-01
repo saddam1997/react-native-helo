@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 6664,
-  "expoServerNgrokUrl": "https://wm-8xc.anonymous.react-native-helo.exp.direct",
-  "packagerNgrokUrl": "https://packager.wm-8xc.anonymous.react-native-helo.exp.direct",
-  "ngrokPid": 6719,
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "webpackServerPort": null
 }

@@ -45,10 +45,10 @@ function getAll() {
     return fetch(`https://www.mocky.io/v2/5185415ba171ea3a00704eed`, requestOptions)
         .then(handleResponse)
         .then(data => {
-            console.log("data.datadata.datadata.data ",data.data);
+            console.log("data.datadata.datadata.data ",data);
             
             let userObj = {
-                listOfUser: data.data
+                listOfUser: data
             }
             return userObj;
         });
@@ -199,6 +199,8 @@ function handleResponse(response) {
     console.log("response22222   ");
 
     return response.text().then(text => {
+        console.log("texttexttext ",text);
+        
         const data = text && JSON.parse(text);
         if (!response.ok) {
             if (response.status === 401) {
