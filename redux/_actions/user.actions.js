@@ -41,10 +41,12 @@ function logout() {
     userService.logout();
     return { type: userConstants.LOGOUT };
 }
-function getAll(data) {
+function getAll() {
+  console.log("enter into action get all ");
+  
     return dispatch => {
         dispatch(request());
-        userService.getAll(data)
+        userService.getAll()
             .then(
                 users => dispatch(success(users)),
                 error => dispatch(failure(error))

@@ -2,9 +2,8 @@
 import { CONST } from '../_config';
 
 export const userService = {
-    login,
-    logout,
-    // getAll,
+        login,
+        getAll,
     // updateUserStatus,
     // getAllNotification,
     // getAllCONTACT,
@@ -34,25 +33,26 @@ function login(username, password) {
 }
 
 
-// function getAll(data) {
-//     let header = new Headers({
-//         'Content-Type': 'application/json',
-//         "Authorization": authHeader().Authorization
-//     });
-//     const requestOptions = {
-//         method: "POST",
-//         headers: header,
-//         body: JSON.stringify(data)
-//     }
-//     return fetch(CONST.BACKEND_URL + `/api/getusers`, requestOptions)
-//         .then(handleResponse)
-//         .then(data => {
-//             let userObj = {
-//                 listOfUser: data.data
-//             }
-//             return userObj;
-//         });
-// }
+function getAll() {
+    let header = new Headers({
+        'Content-Type': 'application/json',
+        //"Authorization": authHeader().Authorization
+    });
+    const requestOptions = {
+        method: "GET",
+        headers: header
+    }
+    return fetch(`https://www.mocky.io/v2/5185415ba171ea3a00704eed`, requestOptions)
+        .then(handleResponse)
+        .then(data => {
+            console.log("data.datadata.datadata.data ",data.data);
+            
+            let userObj = {
+                listOfUser: data.data
+            }
+            return userObj;
+        });
+}
 
 // function getAllNotification(data) {
 //     let header = new Headers({
@@ -203,7 +203,7 @@ function handleResponse(response) {
         if (!response.ok) {
             if (response.status === 401) {
                 // auto logout if 401 response returned from api
-                logout();
+               
                 //location.reload(true);
             }
 

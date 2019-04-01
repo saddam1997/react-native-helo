@@ -6,14 +6,25 @@ import {
   Text,
   View,
 } from 'react-native';
-//import Video from 'react-native-video';
 
-export default class TestScreen extends React.Component {
+import { connect } from 'react-redux';
+
+//import Video from 'react-native-video';
+import { userActions } from '../redux/_actions';
+class TestScreen extends React.Component {
+  componentDidMount() {
+    console.log("componentDidMount");
+    let data={
+      atype:'alluser'
+    }
+    this.props.dispatch(userActions.getAll(data));
+  }
   static navigationOptions = {
     title: 'Test FIle',
   };
 
   render() {
+    console.log("componentDidMount:::::::::::::::::::::::::::::::::::::::::::::::::::");
     /* Go ahead and delete ExpoConfigView and replace it with your
      * content, we just wanted to give you a quick view of your config */
       return <View style={{ height: 200, backgroundColor: '#336699', justifyContent: 'center', alignItems: 'center' }}>
@@ -21,3 +32,12 @@ export default class TestScreen extends React.Component {
       </View>
   }
 }
+
+
+function mapStateToProps(state) {
+  const { users,  } = state;
+  return {
+    users
+  };
+}
+export default connect(mapStateToProps)(TestScreen);
