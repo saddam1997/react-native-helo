@@ -2,314 +2,86 @@ import React from 'react';
 import {
   Platform,
   StyleSheet,
-  Text,
+  ScrollView,Image,
+  FlatList,
   View,
 } from 'react-native';
+import { userActions } from '../redux/_actions';
+//3eecacf3fbb741709502fff76d54f4c5
+import Article from './Article';
+
 import { WebBrowser } from 'expo';
+import { connect } from 'react-redux';
+import { Container,DatePicker, Header, Content, Badge, Text, Icon,Button,Card, CardItem, Body ,CheckBox,Right,Left,ListItem,Thumbnail} from 'native-base';
 
-import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body, Right, Title } from 'native-base';
-import { MonoText } from '../components/StyledText';
+class HomeScreen extends React.Component {
 
-export default class HomeScreen extends React.Component {
-
-
-  state = {
-    data: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+  constructor(props) {
+    super(props);
+     this.state = {
+      isReady: true
+    };
   }
+  
+ async componentDidMount() {
+      await Expo.Font.loadAsync({
+        Roboto: require("native-base/Fonts/Roboto.ttf"),
+        Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
+        Ionicons: require("native-base/Fonts/Ionicons.ttf")
+      });
+      this.setState({ isReady: false });
+      let data={
+       atype:'alluser'
+      }
+      this.props.dispatch(userActions.getAll(data));
+   }
 
-  renderItem = ({ item, index }) => {
-    if (index === 10) {
-
-    } else {
-      return (
-        <View style={{ height: 100, backgroundColor: '#336699', justifyContent: 'center', alignItems: 'center' }}>
-          <Text>{index}</Text>
-        </View>
-      )
+    async componentWillMount() {
+      await Expo.Font.loadAsync({
+      Roboto: require("native-base/Fonts/Roboto.ttf"),
+      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
+      Ionicons: require("native-base/Fonts/Ionicons.ttf")
+      });
+      this.setState({ isReady: false });
     }
-  }
-  keyExtractor = (item, index) => `${index}`;
   static navigationOptions = {
-    header: null,
+    title: 'DashBoard',
   };
-
   render() {
-    return (
-      <Container>
-        <Header />
-        <Content>
-          <Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card><Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem cardBody >
-              <Text>CardItemCardItem cardBodycardBody a simple card with image and title</Text>
-
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Text>this is a simple card with image and title</Text>
-              </Body>
-            </CardItem>
-          </Card>
-        </Content>
-      </Container>
-    );
-  }
-
-  _maybeRenderDevelopmentModeWarning() {
-    if (__DEV__) {
-      const learnMoreButton = (
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Learn more
-        </Text>
-      );
-
+     let {users}=this.props;
+    let {data}=users;
+    if (this.state.isReady) {
       return (
-        <Text style={styles.developmentModeText}>
-          Development mode is enabled, your app will be slower but you can use useful development
-          tools. {learnMoreButton}
-        </Text>
-      );
-    } else {
-      return (
-        <Text style={styles.developmentModeText}>
-          You are not in development mode, your app will run at full speed.
-        </Text>
+        <ScrollView style={styles.container}></ScrollView>
       );
     }
-  }
-
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
-  };
-
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync(
-      'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
+ 
+    return (
+      <ScrollView style={styles.container}>
+          <FlatList
+                data={data}
+                renderItem={({ item }) => <Article article={item} />}
+                keyExtractor={item => item.url}
+                //refreshing={this.state.refreshing}
+                //onRefresh={this.handleRefresh.bind(this)}
+          />
+         
+      </ScrollView>
     );
+  }
+}
+function mapStateToProps(state) {
+  const { users,  } = state;
+  console.log("users  ",users);
+  
+  return {
+    users
   };
 }
-
+export default connect(mapStateToProps)(HomeScreen);
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0,
     backgroundColor: '#fff',
   },
   developmentModeText: {

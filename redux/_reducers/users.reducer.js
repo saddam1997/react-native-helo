@@ -8,7 +8,7 @@ export function users(state = {}, action) {
       };
     case userConstants.GETALL_SUCCESS:
       return {
-        data: action.users.listOfUser
+        data: action.users.newAPIArtical
       };
     case userConstants.GETALL_FAILURE:
       return {

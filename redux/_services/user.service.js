@@ -42,13 +42,13 @@ function getAll() {
         method: "GET",
         headers: header
     }
-    return fetch(`https://www.mocky.io/v2/5185415ba171ea3a00704eed`, requestOptions)
+    return fetch(`http://www.mocky.io/v2/5ca6e999340000d02e76b1c7`, requestOptions)
         .then(handleResponse)
         .then(data => {
-            console.log("data.datadata.datadata.data ",data);
+            console.log("data.datadata.datadata.data ",data.articles.length);
             
             let userObj = {
-                listOfUser: data
+                newAPIArtical: data.articles
             }
             return userObj;
         });
@@ -196,10 +196,10 @@ function getAll() {
 
 
 function handleResponse(response) {
-    console.log("response22222   ");
+   // console.log("response22222   ");
 
     return response.text().then(text => {
-        console.log("texttexttext ",text);
+       // console.log("texttexttext ",text);
         
         const data = text && JSON.parse(text);
         if (!response.ok) {

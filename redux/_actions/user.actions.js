@@ -42,7 +42,7 @@ function logout() {
     return { type: userConstants.LOGOUT };
 }
 function getAll() {
-  console.log("enter into action get all ");
+  //console.log("enter into action get all ");
   
     return dispatch => {
         dispatch(request());
